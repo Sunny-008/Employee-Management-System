@@ -5,10 +5,12 @@ import NewTask from "./NewTask";
 import FailedTask from "./FailedTask";
 
 const TaskList = ({ data }) => {
+  console.log(data);
+
   return (
     <div
       id="tasklist"
-      className="overflow-x-auto flex items-center justify-start h-[55%] flex-nowrap gap-5 mt-10 py-8"
+      className="overflow-x-auto flex flex-wrap items-center justify-start h-[55%] md:flex-nowrap gap-5 mt-10 py-8"
     >
       {data.tasks.map((elem, idx) => {
         if (elem.newTask) {

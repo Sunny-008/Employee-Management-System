@@ -2,7 +2,7 @@ import React from "react";
 
 const AcceptTask = ({ data }) => {
   return (
-    <div className="bg-yellow-400 flex-shrink-0 p-5 h-full w-[348px] rounded-xl">
+    <div className="bg-yellow-400 flex-shrink-0 p-5 md:h-full h-[80vw] md:w-[300px] lg:w-[348px] w-[65vw] rounded-xl">
       <div className="flex justify-between items-center">
         <h3 className="bg-red-600 text-sm px-3 py-1 rounded">
           {data.category}

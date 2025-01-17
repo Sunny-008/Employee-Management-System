@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const CreateTask = () => {
   const [userData, setuserData] = useContext(AuthContext);
 
-  const [tasktittle, settasktittle] = useState("");
+  const [taskTitle, settasktittle] = useState("");
   const [taskDescription, settaskDescription] = useState("");
   const [taskDate, settaskDate] = useState("");
   const [Assign, setAssign] = useState("");
-  const [Category, setCategory] = useState("");
+  const [category, setCategory] = useState("");
 
   const [NewTask, setNewTask] = useState({});
 
@@ -17,11 +17,11 @@ const CreateTask = () => {
     e.preventDefault();
 
     setNewTask({
-      tasktittle,
+      taskTitle,
       taskDescription,
       taskDate,
       Assign,
-      Category,
+      category,
       active: false,
       newTask: true,
       failed: false,
@@ -45,8 +45,28 @@ const CreateTask = () => {
     setAssign("");
     setCategory("");
     settaskDescription("");
-    // console.log("Task Created");
+    alert("successfully Send");
   };
+
+  // useEffect(() => {
+  //   if (Object.keys(NewTask).length > 0) {
+  //     const updatedUserData = userData.map((user) => {
+  //       if (user.firstName === NewTask.assign) {
+  //         return {
+  //           ...user,
+  //           tasks: [...user.tasks, NewTask],
+  //           taskCounts: {
+  //             ...user.taskCounts,
+  //             newTask: user.taskCounts.newTask + 1,
+  //           },
+  //         };
+  //       }
+  //       return user;
+  //     });
+
+  //     setuserData(updatedUserData);
+  //   }
+  // }, [submitHandler]);
 
   return (
     <div className="p-5 bg-[#1c1c1c] mt-7 rounded">
@@ -60,10 +80,8 @@ const CreateTask = () => {
           <div className="mb-5 ">
             <h3 className="text-sm text-gray-300 mb-0.5">Task Title</h3>
             <input
-              value={tasktittle}
-              onChange={(e) => {
-                settasktittle(e.target.value);
-              }}
+              value={taskTitle}
+              onChange={(e) => settasktittle(e.target.value)}
               className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400"
               type="text"
               placeholder="Make a UI design"
@@ -93,12 +111,10 @@ const CreateTask = () => {
             />
           </div>
           <div className="mb-5 ">
-            <h3 className="text-sm text-gray-300 mb-0.5">Category</h3>
+            <h3 className="text-sm text-gray-300 mb-0.5">category</h3>
             <input
-              value={Category}
-              onChange={(e) => {
-                setCategory(e.target.value);
-              }}
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
               className="text-sm py-1 px-2 w-4/5 rounded outline-none bg-transparent border-[1px] border-gray-400"
               type="text"
               placeholder="design,div ,etc"
@@ -110,9 +126,7 @@ const CreateTask = () => {
           <h3 className="text-sm text-gray-300 mb-0.5">Description</h3>
           <textarea
             value={taskDescription}
-            onChange={(e) => {
-              settaskDescription(e.target.value);
-            }}
+            onChange={(e) => settaskDescription(e.target.value)}
             className="rounded outline-none text-sm py-2 px-4 w-full h-44 bg-transparent border-[1px] border-gray-400"
             name=""
             id=""
